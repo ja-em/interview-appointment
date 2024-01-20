@@ -1,0 +1,1133 @@
+{
+	"info": {
+		"_postman_id": "4cc4569f-88fc-4ba8-aaf6-6844d4e58732",
+		"name": "Interview-appointment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14530222"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"set token on global variable\",()=>{\r",
+									"    if(pm.response.json().data){\r",
+									"        pm.globals.set(\"_ia_at\",pm.response.json().data.accessToken)\r",
+									"        pm.globals.set(\"_ia_rt\",pm.response.json().data.refreshToken)\r",
+									"    }\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"robinhood10\",\r\n    \"password\":\"robinhood10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"robinhood10\",\r\n    \"password\":\"robinhood10\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "459"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1cb-s8rM6Bc+BHLH77YM0nC8hpsdKWk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Jan 2024 14:01:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWFiNThiYTcxNTllZWNhOTA5OGY1ZjEiLCJuYW1lIjoiUm9iaW4gaG9vZCAxMCIsImlhdCI6MTcwNTc1OTI2NCwiZXhwIjoxNzA1NzYwNDY0fQ.dx3nlAtSaQG8O9aabGu2eiVcou6UM97svddXnGwe054\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWFiNThiYTcxNTllZWNhOTA5OGY1ZjEiLCJuYW1lIjoiUm9iaW4gaG9vZCAxMCIsImlhdCI6MTcwNTc1OTI2NCwiZXhwIjoxNzA1OTMyMDY0fQ.jEe62QUStNCXOgVMlbdGm9GCDQm0RHxXTs9m6wO49Ag\"\n    }\n}"
+						},
+						{
+							"name": "login error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"robinhood5\",\r\n    \"password\":\"robinhood10\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "72"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"48-MHd6xByLtYPjazf4OIoCR34cCGQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Jan 2024 15:18:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Incorrect password\",\n    \"error\": \"Unauthorized\",\n    \"statusCode\": 401\n}"
+						}
+					]
+				},
+				{
+					"name": "refresh token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"set token on global variable\",()=>{\r",
+									"    if(pm.response.json().data){\r",
+									"        pm.globals.set(\"_ia_at\",pm.response.json().data.accessToken)\r",
+									"        pm.globals.set(\"_ia_rt\",pm.response.json().data.refreshToken)\r",
+									"    }\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{_ia_rt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/refresh-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"refresh-token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "refresh token",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/auth/refresh-token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"auth",
+										"refresh-token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "459"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1cb-Rm70+5Gd1VLss9kQ6l6tiecv5PE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Jan 2024 14:23:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWFiNThiYTcxNTllZWNhOTA5OGY1ZjEiLCJuYW1lIjoiUm9iaW4gaG9vZCAxMCIsImlhdCI6MTcwNTc2MDYyNCwiZXhwIjoxNzA1NzYxODI0fQ.PY78tCzIJxqsMSBsAZTSXUaKXfsa-GIZbqgrLsHHlig\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWFiNThiYTcxNTllZWNhOTA5OGY1ZjEiLCJuYW1lIjoiUm9iaW4gaG9vZCAxMCIsImlhdCI6MTcwNTc2MDYyNCwiZXhwIjoxNzA1OTMzNDI0fQ.B2qnx4FW8Meow8k_DCJUtPPulcV7D3qRaiqYqHTZhUI\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "me",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{_ia_at}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "me",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/auth/me",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"auth",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "109"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6d-B3jRcaWwGjkyChQ5AAa0mUAZmu8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Jan 2024 14:32:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"userId\": \"65ab58ba7159eeca9098f5f1\",\n        \"name\": \"Robin hood 10\",\n        \"username\": \"robinhood10\",\n        \"role\": \"staff\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "interview-list",
+			"item": [
+				{
+					"name": "create interview",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{_ia_at}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"title-2\",\r\n    \"detail\":\"detail-2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/interview-list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"interview-list"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create interview",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"title-2\",\r\n    \"detail\":\"detail-2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/interview-list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"interview-list"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "251"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fb-zgu4l0n1b6opH10w7HlasTVeQa4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Jan 2024 14:30:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"title\": \"title-2\",\n        \"detail\": \"detail-2\",\n        \"comments\": [],\n        \"changingHistories\": [],\n        \"createdBy\": \"65ab58ba7159eeca9098f5f1\",\n        \"status\": \"to-do\",\n        \"createdAt\": \"2024-01-20T14:30:16.040Z\",\n        \"updatedAt\": \"2024-01-20T14:30:16.040Z\",\n        \"id\": \"65abd8f8c2bf8dadefcbcf19\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update interview",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{_ia_at}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"title-new\",\r\n    \"detail\":\"detail-28888\",\r\n    \"status\":\"done\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/interview-list/65abaf29d1ecedec9ca5d4c8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"interview-list",
+								"65abaf29d1ecedec9ca5d4c8"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update interview",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"title-28888\",\r\n    \"detail\":\"detail-28888\",\r\n    \"status\":\"done\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/interview-list/65abd8f8c2bf8dadefcbcf19",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"interview-list",
+										"65abd8f8c2bf8dadefcbcf19"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "13"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d-5PmqOUOLyDrp2YvSxI+Jo0DoZSM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Jan 2024 15:08:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"OK\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get interview",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{_ia_at}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/interview-list?limit=15",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"interview-list"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get interview",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/interview-list?limit=15",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"interview-list"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "15"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "669"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29d-umXNoMYT3qmAVtmJKUf0EUo23B0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Jan 2024 15:07:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"title\": \"title\",\n            \"detail\": \"detail\",\n            \"comments\": [\n                \"65abc91a30c1b00d16c09d44\"\n            ],\n            \"changingHistories\": [],\n            \"createdBy\": {\n                \"name\": \"Robin hood 1\",\n                \"id\": \"65ab58ba7159eeca9098f5e8\"\n            },\n            \"status\": \"to-do\",\n            \"createdAt\": \"2024-01-20T11:31:53.510Z\",\n            \"updatedAt\": \"2024-01-20T14:25:03.201Z\",\n            \"id\": \"65abaf29d1ecedec9ca5d4c8\"\n        },\n        {\n            \"title\": \"title-21\",\n            \"detail\": \"detail-2\",\n            \"comments\": [],\n            \"changingHistories\": [\n                \"65abe11f54a734e05bcb95c1\"\n            ],\n            \"createdBy\": {\n                \"name\": \"Robin hood 10\",\n                \"id\": \"65ab58ba7159eeca9098f5f1\"\n            },\n            \"status\": \"progress\",\n            \"createdAt\": \"2024-01-20T14:30:16.040Z\",\n            \"updatedAt\": \"2024-01-20T15:05:03.881Z\",\n            \"id\": \"65abd8f8c2bf8dadefcbcf19\"\n        }\n    ],\n    \"pagination\": {\n        \"page\": 1,\n        \"pageSize\": 15,\n        \"pageCount\": 2,\n        \"total\": 2\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get interview by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{_ia_at}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/interview-list/65abd8f8c2bf8dadefcbcf19",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"interview-list",
+								"65abd8f8c2bf8dadefcbcf19"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get interview by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/interview-list/65abd8f8c2bf8dadefcbcf19",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"interview-list",
+										"65abd8f8c2bf8dadefcbcf19"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1888"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"760-5JO89GwIZNjX8yUJcWu8OC27Egk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Jan 2024 15:26:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"title\": \"title-28888\",\n        \"detail\": \"detail-28888\",\n        \"comments\": [\n            {\n                \"comment\": \"comment 10.25 PM\",\n                \"createdBy\": {\n                    \"name\": \"Robin hood 10\",\n                    \"id\": \"65ab58ba7159eeca9098f5f1\"\n                },\n                \"createdAt\": \"2024-01-20T15:26:05.969Z\",\n                \"updatedAt\": \"2024-01-20T15:26:05.969Z\",\n                \"id\": \"65abe60de4109455079208e2\"\n            },\n            {\n                \"comment\": \"comment update\",\n                \"createdBy\": {\n                    \"name\": \"Robin hood 10\",\n                    \"id\": \"65ab58ba7159eeca9098f5f1\"\n                },\n                \"createdAt\": \"2024-01-20T15:12:15.754Z\",\n                \"updatedAt\": \"2024-01-20T15:22:31.334Z\",\n                \"id\": \"65abe2cf8e0fa58a404f987e\"\n            },\n            {\n                \"comment\": \"comment by 5\",\n                \"createdBy\": {\n                    \"name\": \"Robin hood 5\",\n                    \"id\": \"65ab58ba7159eeca9098f5ec\"\n                },\n                \"createdAt\": \"2024-01-20T15:18:49.917Z\",\n                \"updatedAt\": \"2024-01-20T15:18:49.917Z\",\n                \"id\": \"65abe4590969ca8a7d0e609d\"\n            },\n            {\n                \"comment\": \"comment lastest\",\n                \"createdBy\": {\n                    \"name\": \"Robin hood 10\",\n                    \"id\": \"65ab58ba7159eeca9098f5f1\"\n                },\n                \"createdAt\": \"2024-01-20T15:17:43.049Z\",\n                \"updatedAt\": \"2024-01-20T15:17:43.049Z\",\n                \"id\": \"65abe4170969ca8a7d0e6089\"\n            },\n            {\n                \"comment\": \"comment1\",\n                \"createdBy\": {\n                    \"name\": \"Robin hood 10\",\n                    \"id\": \"65ab58ba7159eeca9098f5f1\"\n                },\n                \"createdAt\": \"2024-01-20T15:11:50.409Z\",\n                \"updatedAt\": \"2024-01-20T15:11:50.409Z\",\n                \"id\": \"65abe2b68e0fa58a404f9875\"\n            }\n        ],\n        \"changingHistories\": [\n            {\n                \"beforeChangeData\": {\n                    \"title\": \"title-28888\",\n                    \"detail\": \"detail-28888\",\n                    \"status\": \"done\"\n                },\n                \"afterChangeData\": {\n                    \"title\": \"title-28888\",\n                    \"detail\": \"detail-28888\",\n                    \"status\": \"done\"\n                },\n                \"createdBy\": {\n                    \"name\": \"Robin hood 10\",\n                    \"id\": \"65ab58ba7159eeca9098f5f1\"\n                },\n                \"createdAt\": \"2024-01-20T15:08:42.062Z\",\n                \"id\": \"65abe1fa8e0fa58a404f984c\"\n            },\n            {\n                \"beforeChangeData\": {\n                    \"title\": \"title-21\",\n                    \"status\": \"progress\"\n                },\n                \"afterChangeData\": {\n                    \"title\": \"title-21\",\n                    \"status\": \"progress\"\n                },\n                \"createdBy\": {\n                    \"name\": \"Robin hood 10\",\n                    \"id\": \"65ab58ba7159eeca9098f5f1\"\n                },\n                \"createdAt\": \"2024-01-20T15:05:03.876Z\",\n                \"id\": \"65abe11f54a734e05bcb95c1\"\n            }\n        ],\n        \"createdBy\": {\n            \"name\": \"Robin hood 10\",\n            \"id\": \"65ab58ba7159eeca9098f5f1\"\n        },\n        \"status\": \"done\",\n        \"createdAt\": \"2024-01-20T14:30:16.040Z\",\n        \"updatedAt\": \"2024-01-20T15:26:05.974Z\",\n        \"id\": \"65abd8f8c2bf8dadefcbcf19\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "add comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{_ia_at}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\":\"comment 10.25 PM\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/interview-list/65abd8f8c2bf8dadefcbcf19/comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"interview-list",
+								"65abd8f8c2bf8dadefcbcf19",
+								"comment"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add comment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"comment\":\"comment1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/interview-list/65abd8f8c2bf8dadefcbcf19/comment",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"interview-list",
+										"65abd8f8c2bf8dadefcbcf19",
+										"comment"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "13"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d-5PmqOUOLyDrp2YvSxI+Jo0DoZSM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Jan 2024 15:11:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"OK\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{_ia_at}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\":\"comment update\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/interview-list/65abd8f8c2bf8dadefcbcf19/comment/65abe2cf8e0fa58a404f987e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"interview-list",
+								"65abd8f8c2bf8dadefcbcf19",
+								"comment",
+								"65abe2cf8e0fa58a404f987e"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update comment error",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"comment\":\"comment10 new\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/interview-list/65abd8f8c2bf8dadefcbcf19/comment/65abe4590969ca8a7d0e609d",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"interview-list",
+										"65abd8f8c2bf8dadefcbcf19",
+										"comment",
+										"65abe4590969ca8a7d0e609d"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"50-VhraXTSSlP+1tcJApp+GbNhlLWY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Jan 2024 15:21:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": [\n        \"This comment is not yours\"\n    ],\n    \"error\": \"Bad Request\",\n    \"statusCode\": 400\n}"
+						},
+						{
+							"name": "update comment",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"comment\":\"comment update\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/interview-list/65abd8f8c2bf8dadefcbcf19/comment/65abe2cf8e0fa58a404f987e",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"interview-list",
+										"65abd8f8c2bf8dadefcbcf19",
+										"comment",
+										"65abe2cf8e0fa58a404f987e"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "13"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d-5PmqOUOLyDrp2YvSxI+Jo0DoZSM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Jan 2024 15:22:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"OK\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{_ia_at}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\":\"comment10 new\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/interview-list/65abaf29d1ecedec9ca5d4c8/comment/65abcad6efdf19c507666355",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"interview-list",
+								"65abaf29d1ecedec9ca5d4c8",
+								"comment",
+								"65abcad6efdf19c507666355"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
