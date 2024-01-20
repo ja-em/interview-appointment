@@ -13,9 +13,10 @@ services:
     depends_on:
       - db
     env_file:
-      - .env
+      - .env.example
     healthcheck:
-      test: ['CMD', 'curl', '--fail', 'http://localhost:3000/health']
+      test: ["CMD", "wget", "--quiet", "--spider", "http://api:3000/health"]
       interval: 10s
-      timeout: 5s
+      timeout: 15s  
       retries: 3
+
