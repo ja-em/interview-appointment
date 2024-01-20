@@ -11,17 +11,20 @@ import { Observable, catchError, map, throwError } from 'rxjs';
 export class GlobalInterceptor implements NestInterceptor {
   intercept(ctx: ExecutionContext, next: CallHandler<any>): Observable<any> {
     const req = ctx.switchToHttp().getRequest();
-    req.query;
+
     return next.handle().pipe(
       map((data) => {
-        if (!Array.isArray(data)) return { data };
+        if (!data?.lists || (data.lists && !Array.isArray(data.lists))) {
+          return { data };
+        }
+
         return {
-          data,
+          data: data.lists,
           pagination: {
-            page: 0,
-            pageSize: 0,
-            pageCount: data.length,
-            total: 0,
+            page: +(req.query?.page ?? 1),
+            pageSize: +(req.query?.limit ?? 10),
+            pageCount: data.lists.length,
+            total: data['count'] ?? 0,
           },
         };
       }),

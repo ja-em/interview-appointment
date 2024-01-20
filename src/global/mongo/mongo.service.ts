@@ -2,10 +2,22 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument, UserRoleEnum } from './schemas/user';
 import { Model } from 'mongoose';
+import { InterviewListDocument } from './schemas/interview-list';
+import { CommentDocument } from './schemas/comment';
+import { ChangingHistoryDocument } from './schemas/changing-history';
+import { SchemaNameEnum } from './schemas/schema-name';
 
 @Injectable()
 export class MongoService {
-  constructor(@InjectModel(User.name) public userModel: Model<UserDocument>) {
+  constructor(
+    @InjectModel(SchemaNameEnum.USER) public userModel: Model<UserDocument>,
+    @InjectModel(SchemaNameEnum.INTERVIEW_LIST)
+    public interviewListModel: Model<InterviewListDocument>,
+    @InjectModel(SchemaNameEnum.COMMENT)
+    public commentModel: Model<CommentDocument>,
+    @InjectModel(SchemaNameEnum.CHANGING_HISTORY)
+    public changingHistoryModel: Model<ChangingHistoryDocument>,
+  ) {
     this._initUser();
   }
   private async _initUser() {

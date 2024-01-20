@@ -1,5 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { User } from './user';
+import { ChangingHistory } from './changing-history';
+import { Comment } from './comment';
+import { SchemaNameEnum } from './schema-name';
+import { Schema as MgSchema } from 'mongoose';
 
 export enum InterviewStatusEnum {
   TO_DO = 'to-do',
@@ -14,16 +18,24 @@ export class InterviewList {
   @Prop()
   detail: string;
 
-  @Prop()
-  comments: Array<string>;
+  @Prop({
+    type: [MgSchema.Types.ObjectId],
+    ref: SchemaNameEnum.COMMENT,
+    default: [],
+  })
+  comments: Array<string | Comment>;
 
-  @Prop()
-  changingHistories: Array<string>;
+  @Prop({
+    type: [MgSchema.Types.ObjectId],
+    ref: SchemaNameEnum.CHANGING_HISTORY,
+    default: [],
+  })
+  changingHistories: Array<string | ChangingHistory>;
 
-  @Prop({ type: String, ref: User.name })
+  @Prop({ type: MgSchema.Types.ObjectId, ref: SchemaNameEnum.USER })
   createdBy: string | User;
 
-  @Prop({ enum: InterviewStatusEnum })
+  @Prop({ enum: InterviewStatusEnum, default: InterviewStatusEnum.TO_DO })
   status: InterviewStatusEnum;
 }
 
