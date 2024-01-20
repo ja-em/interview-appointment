@@ -4,7 +4,9 @@ import { InterviewList } from './interview-list';
 import { SchemaNameEnum } from './schema-name';
 import { HydratedDocument, Schema as MgSchema } from 'mongoose';
 
-export type IChangeData = Partial<Pick<InterviewList, 'title' | 'detail'>>;
+export type IChangeData = Partial<
+  Pick<InterviewList, 'title' | 'detail' | 'status'>
+>;
 @Schema({
   timestamps: true,
   collection: 'changing-histories',
@@ -26,7 +28,7 @@ export class ChangingHistory {
   @Prop({ type: Object })
   afterChangeData: IChangeData;
 
-  @Prop({ type: String, ref: User.name })
+  @Prop({ type: String, ref: SchemaNameEnum.USER })
   createdBy: string | User;
 }
 

@@ -8,7 +8,7 @@ import { HydratedDocument, Schema as MgSchema } from 'mongoose';
 export enum InterviewStatusEnum {
   TO_DO = 'to-do',
   PROGRESS = 'progress',
-  DONE = 'DONE',
+  DONE = 'done',
 }
 @Schema({
   timestamps: true,

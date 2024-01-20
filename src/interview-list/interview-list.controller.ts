@@ -17,6 +17,7 @@ import {
   GetInterviewByIdParam,
   GetInterviewQuery,
   UpdateCommentParam,
+  UpdateInterviewBody,
 } from './interview-list.dto';
 import { CurrentUser } from 'src/global/global.decorator';
 import { ICurrentUser } from 'src/global/global.interface';
@@ -41,6 +42,19 @@ export class InterviewListController {
   @Get(':interviewId')
   getInterviewById(@Param() param: GetInterviewByIdParam) {
     return this._interviewListService.getInterviewById(param.interviewId);
+  }
+
+  @Patch(':interviewId')
+  updateInterviewById(
+    @Param() param: GetInterviewByIdParam,
+    @Body() body: UpdateInterviewBody,
+    @CurrentUser() user: ICurrentUser,
+  ) {
+    return this._interviewListService.updateInterviewById(
+      param.interviewId,
+      body,
+      user.userId,
+    );
   }
 
   @Post(':interviewId/comment')

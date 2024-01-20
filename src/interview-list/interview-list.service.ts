@@ -8,10 +8,15 @@ import {
   CreateInterviewBody,
   GetInterviewQuery,
   UpdateCommentParam,
+  UpdateInterviewBody,
 } from './interview-list.dto';
 import { MongoService } from 'src/global/mongo/mongo.service';
-import { InterviewStatusEnum } from 'src/global/mongo/schemas/interview-list';
+import {
+  InterviewList,
+  InterviewStatusEnum,
+} from 'src/global/mongo/schemas/interview-list';
 import { CommentDocument } from 'src/global/mongo/schemas/comment';
+import { IChangeData } from 'src/global/mongo/schemas/changing-history';
 
 @Injectable()
 export class InterviewListService {
@@ -33,14 +38,14 @@ export class InterviewListService {
       const [lists, count] = await Promise.all([
         this._mongoService.interviewListModel
           .find({
-            status: InterviewStatusEnum.TO_DO,
+            status: { $ne: InterviewStatusEnum.DONE },
           })
           .sort({ createdAt: 'asc' })
           .skip((query.getPage() - 1) * query.getLimit())
           .limit(query.getLimit())
           .populate({ path: 'createdBy', select: 'name' }),
         this._mongoService.interviewListModel.countDocuments({
-          status: InterviewStatusEnum.TO_DO,
+          status: { $ne: InterviewStatusEnum.DONE },
         }),
       ]);
       return {
@@ -62,11 +67,21 @@ export class InterviewListService {
                 { path: 'createdBy', select: 'name' },
                 {
                   path: 'comments',
+                  select: '-interviewList',
+                  populate: {
+                    path: 'createdBy',
+                    select: 'name',
+                  },
+                  options: { sort: { updatedAt: -1, createdAt: -1 } },
+                },
+                {
+                  path: 'changingHistories',
                   select: '-updatedAt -interviewList',
                   populate: {
                     path: 'createdBy',
                     select: 'name',
                   },
+                  options: { sort: { createdAt: -1 } },
                 },
               ]
             : [],
@@ -176,6 +191,71 @@ export class InterviewListService {
         this._mongoService.commentModel.deleteOne({ _id: param.commentId }),
         findInterview.save(),
       ]);
+      return 'OK';
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  private _compareValue(
+    interviewDetail: InterviewList,
+    body: UpdateInterviewBody,
+  ): Array<keyof IChangeData> {
+    const keyChange: Array<keyof IChangeData> = [];
+    const isChange = (oldValue: string, newValue: string) => {
+      return (
+        oldValue.localeCompare(newValue, undefined, {
+          sensitivity: 'accent',
+        }) !== 0
+      );
+    };
+    if (isChange(interviewDetail.title, body.title)) {
+      keyChange.push('title');
+    }
+    if (isChange(interviewDetail.detail, body.detail)) {
+      keyChange.push('detail');
+    }
+    if (isChange(interviewDetail.status, body.status)) {
+      keyChange.push('status');
+    }
+    return keyChange;
+  }
+
+  async updateInterviewById(
+    interviewId: string,
+    body: UpdateInterviewBody,
+    userId: string,
+  ) {
+    try {
+      const findInterview = await this.getInterviewById(interviewId);
+      const keyChange = this._compareValue(findInterview, body);
+      if (keyChange.length === 0) {
+        return 'OK';
+      }
+
+      const { newValue, oldValue } = keyChange.reduce<{
+        oldValue: IChangeData;
+        newValue: IChangeData;
+      }>(
+        (a, c) => {
+          findInterview[c as string] = body[c];
+
+          Object.assign(a.oldValue, { [c]: findInterview[c] });
+          Object.assign(a.newValue, { [c]: body[c] });
+          return a;
+        },
+        { oldValue: {}, newValue: {} },
+      );
+      const newLog = await this._mongoService.changingHistoryModel.create({
+        beforeChangeData: oldValue,
+        afterChangeData: newValue,
+        interviewList: findInterview.id,
+        createdBy: userId,
+      });
+
+      findInterview.changingHistories.push(newLog.id);
+      await findInterview.save();
+
       return 'OK';
     } catch (e) {
       throw e;

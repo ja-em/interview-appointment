@@ -1,6 +1,9 @@
-import { IsMongoId, IsString } from 'class-validator';
+import { IsEnum, IsMongoId, IsString } from 'class-validator';
 import { PaginationQueryDto } from 'src/global/global.dto';
-import { InterviewList } from 'src/global/mongo/schemas/interview-list';
+import {
+  InterviewList,
+  InterviewStatusEnum,
+} from 'src/global/mongo/schemas/interview-list';
 
 export class CreateInterviewBody implements Partial<InterviewList> {
   @IsString()
@@ -24,4 +27,9 @@ export class AddCommentToInterviewBody {
 export class UpdateCommentParam extends GetInterviewByIdParam {
   @IsMongoId()
   commentId: string;
+}
+
+export class UpdateInterviewBody extends CreateInterviewBody {
+  @IsEnum(InterviewStatusEnum)
+  status: InterviewStatusEnum;
 }
