@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import * as bcrypt from 'bcrypt';
 
-export enum UserRole {
+export enum UserRoleEnum {
   ADMIN = 'admin',
   STAFF = 'staff',
 }
@@ -18,8 +18,8 @@ export class User {
   @Prop()
   password: string;
 
-  @Prop({ enum: UserRole })
-  role: UserRole;
+  @Prop({ enum: UserRoleEnum })
+  role: UserRoleEnum;
 
   isValidPassword(plain: string): boolean {
     return bcrypt.compareSync(plain, this.password);

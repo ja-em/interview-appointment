@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { User, UserDocument, UserRole } from './schemas/user';
+import { User, UserDocument, UserRoleEnum } from './schemas/user';
 import { Model } from 'mongoose';
 
 @Injectable()
@@ -19,7 +19,7 @@ export class MongoService {
         const user = new User();
         user.name = `Robin hood ${i + 1}`;
         user.username = user.name.replace(/ /g, '').toLowerCase();
-        user.role = i % 2 === 0 ? UserRole.ADMIN : UserRole.STAFF;
+        user.role = i % 2 === 0 ? UserRoleEnum.ADMIN : UserRoleEnum.STAFF;
         user.setPassword(user.username);
         return user;
       });
