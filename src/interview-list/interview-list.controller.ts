@@ -10,7 +10,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { InterviewListService } from './interview-list.service';
-import { AccessTokenGuard } from 'src/global/global.guard';
+import { AccessTokenGuard, RolesGuard } from 'src/global/global.guard';
 import {
   AddCommentToInterviewBody,
   CreateInterviewBody,
@@ -19,8 +19,9 @@ import {
   UpdateCommentParam,
   UpdateInterviewBody,
 } from './interview-list.dto';
-import { CurrentUser } from 'src/global/global.decorator';
+import { CurrentUser, Roles } from 'src/global/global.decorator';
 import { ICurrentUser } from 'src/global/global.interface';
+import { UserRoleEnum } from 'src/global/mongo/schemas/user';
 
 @UseGuards(AccessTokenGuard)
 @Controller('interview-list')
@@ -35,6 +36,8 @@ export class InterviewListController {
   }
 
   @Get()
+  @UseGuards(RolesGuard)
+  @Roles(UserRoleEnum.ADMIN, UserRoleEnum.STAFF)
   getInterview(@Query() query: GetInterviewQuery) {
     return this._interviewListService.getInterview(query);
   }

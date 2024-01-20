@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  db:
+    image: mongo:latest
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3000
+    depends_on:
+      - db
+    env_file:
+      - .env
+    healthcheck:
+      test: ['CMD', 'curl', '--fail', 'http://localhost:3000/health']
+      interval: 10s
+      timeout: 5s
+      retries: 3

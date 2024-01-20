@@ -8,6 +8,9 @@ import { JwtService } from './jwt/jwt.service';
 import { Request } from 'express';
 import { MongoService } from './mongo/mongo.service';
 import { ICurrentUser } from './global.interface';
+import { Reflector } from '@nestjs/core';
+import { USER_ROLES_KEY } from './global.decorator';
+import { UserRoleEnum } from './mongo/schemas/user';
 
 @Injectable()
 export class AccessTokenGuard implements CanActivate {
@@ -37,5 +40,21 @@ export class AccessTokenGuard implements CanActivate {
       Logger.error(e, AccessTokenGuard.name);
       return false;
     }
+  }
+}
+
+@Injectable()
+export class RolesGuard implements CanActivate {
+  constructor(private reflector: Reflector) {}
+  canActivate(context: ExecutionContext): boolean {
+    const requiredRoles = this.reflector.getAllAndOverride<UserRoleEnum[]>(
+      USER_ROLES_KEY,
+      [context.getHandler(), context.getClass()],
+    );
+    if (!requiredRoles) {
+      return true;
+    }
+    const user: ICurrentUser = context.switchToHttp().getRequest().user;
+    return requiredRoles.includes(user.role);
   }
 }
