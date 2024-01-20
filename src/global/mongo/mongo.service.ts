@@ -6,9 +6,9 @@ import { Model } from 'mongoose';
 @Injectable()
 export class MongoService {
   constructor(@InjectModel(User.name) public userModel: Model<UserDocument>) {
-    this.initUser();
+    this._initUser();
   }
-  async initUser() {
+  private async _initUser() {
     try {
       const totalUser = 10;
       const count = await this.userModel.countDocuments();
