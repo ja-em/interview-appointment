@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { HydratedDocument } from 'mongoose';
 import * as bcrypt from 'bcrypt';
 
 export enum UserRoleEnum {
@@ -7,7 +7,15 @@ export enum UserRoleEnum {
   STAFF = 'staff',
 }
 
-@Schema()
+@Schema({
+  toJSON: {
+    transform: (doc, ret) => {
+      ret.id = doc.id;
+      delete ret.__v;
+      delete ret._id;
+    },
+  },
+})
 export class User {
   @Prop()
   name: string;
@@ -30,7 +38,7 @@ export class User {
   }
 }
 
-export type UserDocument = Document & User;
+export type UserDocument = HydratedDocument<User>;
 export const UserSchema = SchemaFactory.createForClass(User);
 
 UserSchema.methods.isValidPassword = function (plain: string): boolean {

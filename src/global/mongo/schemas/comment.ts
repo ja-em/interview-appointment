@@ -2,9 +2,18 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { User } from './user';
 import { InterviewList } from './interview-list';
 import { SchemaNameEnum } from './schema-name';
-import { Schema as MgSchema } from 'mongoose';
+import { HydratedDocument, Schema as MgSchema } from 'mongoose';
 
-@Schema({ timestamps: true })
+@Schema({
+  timestamps: true,
+  toJSON: {
+    transform: (doc, ret) => {
+      ret.id = doc.id;
+      delete ret.__v;
+      delete ret._id;
+    },
+  },
+})
 export class Comment {
   @Prop({ type: MgSchema.Types.ObjectId, ref: SchemaNameEnum.INTERVIEW_LIST })
   interviewList: string | InterviewList;
@@ -12,9 +21,9 @@ export class Comment {
   @Prop()
   comment: string;
 
-  @Prop({ type: String, ref: User.name })
+  @Prop({ type: String, ref: SchemaNameEnum.USER })
   createdBy: string | User;
 }
 
-export type CommentDocument = Document & Comment;
+export type CommentDocument = HydratedDocument<Comment>;
 export const CommentSchema = SchemaFactory.createForClass(Comment);

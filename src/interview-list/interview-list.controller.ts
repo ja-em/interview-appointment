@@ -1,7 +1,23 @@
-import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
 import { InterviewListService } from './interview-list.service';
 import { AccessTokenGuard } from 'src/global/global.guard';
-import { CreateInterviewBody, GetInterviewQuery } from './interview-list.dto';
+import {
+  AddCommentToInterviewBody,
+  CreateInterviewBody,
+  GetInterviewByIdParam,
+  GetInterviewQuery,
+  UpdateCommentParam,
+} from './interview-list.dto';
 import { CurrentUser } from 'src/global/global.decorator';
 import { ICurrentUser } from 'src/global/global.interface';
 
@@ -20,5 +36,44 @@ export class InterviewListController {
   @Get()
   getInterview(@Query() query: GetInterviewQuery) {
     return this._interviewListService.getInterview(query);
+  }
+
+  @Get(':interviewId')
+  getInterviewById(@Param() param: GetInterviewByIdParam) {
+    return this._interviewListService.getInterviewById(param.interviewId);
+  }
+
+  @Post(':interviewId/comment')
+  addCommentToInterview(
+    @CurrentUser() user: ICurrentUser,
+    @Param() param: GetInterviewByIdParam,
+    @Body() body: AddCommentToInterviewBody,
+  ) {
+    return this._interviewListService.addCommentToInterview(
+      user.userId,
+      param.interviewId,
+      body.comment,
+    );
+  }
+
+  @Patch(':interviewId/comment/:commentId')
+  updateComment(
+    @CurrentUser() user: ICurrentUser,
+    @Param() param: UpdateCommentParam,
+    @Body() body: AddCommentToInterviewBody,
+  ) {
+    return this._interviewListService.updateComment(
+      user.userId,
+      param,
+      body.comment,
+    );
+  }
+
+  @Delete(':interviewId/comment/:commentId')
+  deleteComment(
+    @CurrentUser() user: ICurrentUser,
+    @Param() param: UpdateCommentParam,
+  ) {
+    return this._interviewListService.deleteComment(user.userId, param);
   }
 }

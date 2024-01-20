@@ -3,14 +3,24 @@ import { User } from './user';
 import { ChangingHistory } from './changing-history';
 import { Comment } from './comment';
 import { SchemaNameEnum } from './schema-name';
-import { Schema as MgSchema } from 'mongoose';
+import { HydratedDocument, Schema as MgSchema } from 'mongoose';
 
 export enum InterviewStatusEnum {
   TO_DO = 'to-do',
   PROGRESS = 'progress',
   DONE = 'DONE',
 }
-@Schema({ timestamps: true, collection: 'interview-lists' })
+@Schema({
+  timestamps: true,
+  collection: 'interview-lists',
+  toJSON: {
+    transform: (doc, ret) => {
+      ret.id = doc.id;
+      delete ret.__v;
+      delete ret._id;
+    },
+  },
+})
 export class InterviewList {
   @Prop()
   title: string;
@@ -39,5 +49,5 @@ export class InterviewList {
   status: InterviewStatusEnum;
 }
 
-export type InterviewListDocument = Document & InterviewList;
+export type InterviewListDocument = HydratedDocument<InterviewList>;
 export const InterviewListSchema = SchemaFactory.createForClass(InterviewList);
