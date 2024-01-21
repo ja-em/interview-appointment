@@ -4,12 +4,21 @@ services:
   db:
     image: mongo:latest
 
+  mongo-express:
+    image: mongo-express
+    ports:
+      - "8888:8081"
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=db
+    depends_on:
+      - db
+
   api:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 3001:3000
+      - 3000:3000
     depends_on:
       - db
     env_file:
