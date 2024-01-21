@@ -40,6 +40,7 @@ export class InterviewListService {
           .find({
             status: { $ne: InterviewStatusEnum.DONE },
           })
+          .select('-comments -changingHistories')
           .sort({ createdAt: 'asc' })
           .skip((query.getPage() - 1) * query.getLimit())
           .limit(query.getLimit())
@@ -238,10 +239,12 @@ export class InterviewListService {
         newValue: IChangeData;
       }>(
         (a, c) => {
-          findInterview[c as string] = body[c];
-
+          
           Object.assign(a.oldValue, { [c]: findInterview[c] });
           Object.assign(a.newValue, { [c]: body[c] });
+
+
+          findInterview[c as string] = body[c];
           return a;
         },
         { oldValue: {}, newValue: {} },

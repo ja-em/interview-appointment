@@ -32,7 +32,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"robinhood10\",\r\n    \"password\":\"robinhood10\"\r\n}",
+							"raw": "{\r\n    \"username\":\"robinhood4\",\r\n    \"password\":\"robinhood4\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -442,7 +442,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\":\"title-2\",\r\n    \"detail\":\"detail-2\"\r\n}",
+							"raw": "{\r\n    \"title\":\"title2\",\r\n    \"detail\":\"detail2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -543,7 +543,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\":\"title-new\",\r\n    \"detail\":\"detail-28888\",\r\n    \"status\":\"done\"\r\n}",
+							"raw": "{\r\n    \"title\":\"title-new\",\r\n    \"detail\":\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\",\r\n    \"status\":\"progress\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -551,7 +551,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/interview-list/65abaf29d1ecedec9ca5d4c8",
+							"raw": "http://localhost:3000/interview-list/65acb6d2aacf44f665b32255",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -559,7 +559,7 @@
 							"port": "3000",
 							"path": [
 								"interview-list",
-								"65abaf29d1ecedec9ca5d4c8"
+								"65acb6d2aacf44f665b32255"
 							]
 						}
 					},
@@ -645,7 +645,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/interview-list?limit=15",
+							"raw": "http://localhost:3000/interview-list",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -653,12 +653,6 @@
 							"port": "3000",
 							"path": [
 								"interview-list"
-							],
-							"query": [
-								{
-									"key": "limit",
-									"value": "15"
-								}
 							]
 						}
 					},
@@ -669,7 +663,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/interview-list?limit=15",
+									"raw": "http://localhost:3000/interview-list",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -677,12 +671,6 @@
 									"port": "3000",
 									"path": [
 										"interview-list"
-									],
-									"query": [
-										{
-											"key": "limit",
-											"value": "15"
-										}
 									]
 								}
 							},
@@ -695,20 +683,32 @@
 									"value": "Express"
 								},
 								{
+									"key": "X-RateLimit-Limit",
+									"value": "10"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "8"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "25"
+								},
+								{
 									"key": "Content-Type",
 									"value": "application/json; charset=utf-8"
 								},
 								{
 									"key": "Content-Length",
-									"value": "669"
+									"value": "1130"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"29d-umXNoMYT3qmAVtmJKUf0EUo23B0\""
+									"value": "W/\"46a-e8CzkZyY5iWegzWUZJxixOiQzcA\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 20 Jan 2024 15:07:41 GMT"
+									"value": "Sun, 21 Jan 2024 06:19:49 GMT"
 								},
 								{
 									"key": "Connection",
@@ -720,7 +720,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"data\": [\n        {\n            \"title\": \"title\",\n            \"detail\": \"detail\",\n            \"comments\": [\n                \"65abc91a30c1b00d16c09d44\"\n            ],\n            \"changingHistories\": [],\n            \"createdBy\": {\n                \"name\": \"Robin hood 1\",\n                \"id\": \"65ab58ba7159eeca9098f5e8\"\n            },\n            \"status\": \"to-do\",\n            \"createdAt\": \"2024-01-20T11:31:53.510Z\",\n            \"updatedAt\": \"2024-01-20T14:25:03.201Z\",\n            \"id\": \"65abaf29d1ecedec9ca5d4c8\"\n        },\n        {\n            \"title\": \"title-21\",\n            \"detail\": \"detail-2\",\n            \"comments\": [],\n            \"changingHistories\": [\n                \"65abe11f54a734e05bcb95c1\"\n            ],\n            \"createdBy\": {\n                \"name\": \"Robin hood 10\",\n                \"id\": \"65ab58ba7159eeca9098f5f1\"\n            },\n            \"status\": \"progress\",\n            \"createdAt\": \"2024-01-20T14:30:16.040Z\",\n            \"updatedAt\": \"2024-01-20T15:05:03.881Z\",\n            \"id\": \"65abd8f8c2bf8dadefcbcf19\"\n        }\n    ],\n    \"pagination\": {\n        \"page\": 1,\n        \"pageSize\": 15,\n        \"pageCount\": 2,\n        \"total\": 2\n    }\n}"
+							"body": "{\n    \"data\": [\n        {\n            \"title\": \"title-new-10\",\n            \"detail\": \"detail-new done by 2\",\n            \"createdBy\": {\n                \"name\": \"Robin hood 9\",\n                \"id\": \"65acb24431b13392dcfa7ce5\"\n            },\n            \"status\": \"to-do\",\n            \"createdAt\": \"2024-01-21T05:59:24.751Z\",\n            \"updatedAt\": \"2024-01-21T06:09:30.685Z\",\n            \"id\": \"65acb2bc67d6a2131999b756\"\n        },\n        {\n            \"title\": \"title-new\",\n            \"detail\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\",\n            \"createdBy\": {\n                \"name\": \"Robin hood 4\",\n                \"id\": \"65acb24431b13392dcfa7ce0\"\n            },\n            \"status\": \"progress\",\n            \"createdAt\": \"2024-01-21T06:16:50.357Z\",\n            \"updatedAt\": \"2024-01-21T06:19:46.644Z\",\n            \"id\": \"65acb6d2aacf44f665b32255\"\n        }\n    ],\n    \"pagination\": {\n        \"page\": 1,\n        \"pageSize\": 10,\n        \"pageCount\": 2,\n        \"total\": 2\n    }\n}"
 						}
 					]
 				},
@@ -740,7 +740,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/interview-list/65abd8f8c2bf8dadefcbcf19",
+							"raw": "http://localhost:3000/interview-list/65acb6d2aacf44f665b32255",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -748,7 +748,7 @@
 							"port": "3000",
 							"path": [
 								"interview-list",
-								"65abd8f8c2bf8dadefcbcf19"
+								"65acb6d2aacf44f665b32255"
 							]
 						}
 					},
@@ -759,7 +759,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/interview-list/65abd8f8c2bf8dadefcbcf19",
+									"raw": "http://localhost:3000/interview-list/65acb2bc67d6a2131999b756",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -767,7 +767,7 @@
 									"port": "3000",
 									"path": [
 										"interview-list",
-										"65abd8f8c2bf8dadefcbcf19"
+										"65acb2bc67d6a2131999b756"
 									]
 								}
 							},
@@ -780,20 +780,32 @@
 									"value": "Express"
 								},
 								{
+									"key": "X-RateLimit-Limit",
+									"value": "10"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "9"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
 									"key": "Content-Type",
 									"value": "application/json; charset=utf-8"
 								},
 								{
 									"key": "Content-Length",
-									"value": "1888"
+									"value": "1945"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"760-5JO89GwIZNjX8yUJcWu8OC27Egk\""
+									"value": "W/\"799-X/Vtg3uPfbL+Onaj7lXPlUr28No\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 20 Jan 2024 15:26:10 GMT"
+									"value": "Sun, 21 Jan 2024 06:11:37 GMT"
 								},
 								{
 									"key": "Connection",
@@ -805,7 +817,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"data\": {\n        \"title\": \"title-28888\",\n        \"detail\": \"detail-28888\",\n        \"comments\": [\n            {\n                \"comment\": \"comment 10.25 PM\",\n                \"createdBy\": {\n                    \"name\": \"Robin hood 10\",\n                    \"id\": \"65ab58ba7159eeca9098f5f1\"\n                },\n                \"createdAt\": \"2024-01-20T15:26:05.969Z\",\n                \"updatedAt\": \"2024-01-20T15:26:05.969Z\",\n                \"id\": \"65abe60de4109455079208e2\"\n            },\n            {\n                \"comment\": \"comment update\",\n                \"createdBy\": {\n                    \"name\": \"Robin hood 10\",\n                    \"id\": \"65ab58ba7159eeca9098f5f1\"\n                },\n                \"createdAt\": \"2024-01-20T15:12:15.754Z\",\n                \"updatedAt\": \"2024-01-20T15:22:31.334Z\",\n                \"id\": \"65abe2cf8e0fa58a404f987e\"\n            },\n            {\n                \"comment\": \"comment by 5\",\n                \"createdBy\": {\n                    \"name\": \"Robin hood 5\",\n                    \"id\": \"65ab58ba7159eeca9098f5ec\"\n                },\n                \"createdAt\": \"2024-01-20T15:18:49.917Z\",\n                \"updatedAt\": \"2024-01-20T15:18:49.917Z\",\n                \"id\": \"65abe4590969ca8a7d0e609d\"\n            },\n            {\n                \"comment\": \"comment lastest\",\n                \"createdBy\": {\n                    \"name\": \"Robin hood 10\",\n                    \"id\": \"65ab58ba7159eeca9098f5f1\"\n                },\n                \"createdAt\": \"2024-01-20T15:17:43.049Z\",\n                \"updatedAt\": \"2024-01-20T15:17:43.049Z\",\n                \"id\": \"65abe4170969ca8a7d0e6089\"\n            },\n            {\n                \"comment\": \"comment1\",\n                \"createdBy\": {\n                    \"name\": \"Robin hood 10\",\n                    \"id\": \"65ab58ba7159eeca9098f5f1\"\n                },\n                \"createdAt\": \"2024-01-20T15:11:50.409Z\",\n                \"updatedAt\": \"2024-01-20T15:11:50.409Z\",\n                \"id\": \"65abe2b68e0fa58a404f9875\"\n            }\n        ],\n        \"changingHistories\": [\n            {\n                \"beforeChangeData\": {\n                    \"title\": \"title-28888\",\n                    \"detail\": \"detail-28888\",\n                    \"status\": \"done\"\n                },\n                \"afterChangeData\": {\n                    \"title\": \"title-28888\",\n                    \"detail\": \"detail-28888\",\n                    \"status\": \"done\"\n                },\n                \"createdBy\": {\n                    \"name\": \"Robin hood 10\",\n                    \"id\": \"65ab58ba7159eeca9098f5f1\"\n                },\n                \"createdAt\": \"2024-01-20T15:08:42.062Z\",\n                \"id\": \"65abe1fa8e0fa58a404f984c\"\n            },\n            {\n                \"beforeChangeData\": {\n                    \"title\": \"title-21\",\n                    \"status\": \"progress\"\n                },\n                \"afterChangeData\": {\n                    \"title\": \"title-21\",\n                    \"status\": \"progress\"\n                },\n                \"createdBy\": {\n                    \"name\": \"Robin hood 10\",\n                    \"id\": \"65ab58ba7159eeca9098f5f1\"\n                },\n                \"createdAt\": \"2024-01-20T15:05:03.876Z\",\n                \"id\": \"65abe11f54a734e05bcb95c1\"\n            }\n        ],\n        \"createdBy\": {\n            \"name\": \"Robin hood 10\",\n            \"id\": \"65ab58ba7159eeca9098f5f1\"\n        },\n        \"status\": \"done\",\n        \"createdAt\": \"2024-01-20T14:30:16.040Z\",\n        \"updatedAt\": \"2024-01-20T15:26:05.974Z\",\n        \"id\": \"65abd8f8c2bf8dadefcbcf19\"\n    }\n}"
+							"body": "{\n    \"data\": {\n        \"title\": \"title-new-10\",\n        \"detail\": \"detail-new done by 2\",\n        \"comments\": [\n            {\n                \"comment\": \"comment update by 3\",\n                \"createdBy\": {\n                    \"name\": \"Robin hood 3\",\n                    \"id\": \"65acb24431b13392dcfa7cdf\"\n                },\n                \"createdAt\": \"2024-01-21T06:04:51.154Z\",\n                \"updatedAt\": \"2024-01-21T06:07:49.043Z\",\n                \"id\": \"65acb40367d6a2131999b7b5\"\n            },\n            {\n                \"comment\": \"comment by 5\",\n                \"createdBy\": {\n                    \"name\": \"Robin hood 5\",\n                    \"id\": \"65acb24431b13392dcfa7ce1\"\n                },\n                \"createdAt\": \"2024-01-21T06:05:25.854Z\",\n                \"updatedAt\": \"2024-01-21T06:05:25.854Z\",\n                \"id\": \"65acb42567d6a2131999b7cd\"\n            },\n            {\n                \"comment\": \"comment by 2\",\n                \"createdBy\": {\n                    \"name\": \"Robin hood 2\",\n                    \"id\": \"65acb24431b13392dcfa7cde\"\n                },\n                \"createdAt\": \"2024-01-21T06:04:21.437Z\",\n                \"updatedAt\": \"2024-01-21T06:04:21.437Z\",\n                \"id\": \"65acb3e567d6a2131999b7a2\"\n            }\n        ],\n        \"changingHistories\": [\n            {\n                \"beforeChangeData\": {\n                    \"detail\": \"detail-new by 1\",\n                    \"status\": \"progress\"\n                },\n                \"afterChangeData\": {\n                    \"detail\": \"detail-new done by 2\",\n                    \"status\": \"done\"\n                },\n                \"createdBy\": {\n                    \"name\": \"Robin hood 2\",\n                    \"id\": \"65acb24431b13392dcfa7cde\"\n                },\n                \"createdAt\": \"2024-01-21T06:03:13.427Z\",\n                \"id\": \"65acb3a167d6a2131999b792\"\n            },\n            {\n                \"beforeChangeData\": {\n                    \"detail\": \"detail-new\"\n                },\n                \"afterChangeData\": {\n                    \"detail\": \"detail-new by 1\"\n                },\n                \"createdBy\": {\n                    \"name\": \"Robin hood 1\",\n                    \"id\": \"65acb24431b13392dcfa7cdd\"\n                },\n                \"createdAt\": \"2024-01-21T06:02:25.005Z\",\n                \"id\": \"65acb37167d6a2131999b783\"\n            },\n            {\n                \"beforeChangeData\": {\n                    \"title\": \"title-new\"\n                },\n                \"afterChangeData\": {\n                    \"title\": \"title-new-10\"\n                },\n                \"createdBy\": {\n                    \"name\": \"Robin hood 10\",\n                    \"id\": \"65acb24431b13392dcfa7ce6\"\n                },\n                \"createdAt\": \"2024-01-21T06:01:46.394Z\",\n                \"id\": \"65acb34a67d6a2131999b774\"\n            },\n            {\n                \"beforeChangeData\": {\n                    \"title\": \"title\",\n                    \"detail\": \"detail\",\n                    \"status\": \"to-do\"\n                },\n                \"afterChangeData\": {\n                    \"title\": \"title-new\",\n                    \"detail\": \"detail-new\",\n                    \"status\": \"progress\"\n                },\n                \"createdBy\": {\n                    \"name\": \"Robin hood 9\",\n                    \"id\": \"65acb24431b13392dcfa7ce5\"\n                },\n                \"createdAt\": \"2024-01-21T06:00:24.367Z\",\n                \"id\": \"65acb2f867d6a2131999b761\"\n            }\n        ],\n        \"createdBy\": {\n            \"name\": \"Robin hood 9\",\n            \"id\": \"65acb24431b13392dcfa7ce5\"\n        },\n        \"status\": \"done\",\n        \"createdAt\": \"2024-01-21T05:59:24.751Z\",\n        \"updatedAt\": \"2024-01-21T06:09:30.685Z\",\n        \"id\": \"65acb2bc67d6a2131999b756\"\n    }\n}"
 						}
 					]
 				},
@@ -826,7 +838,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"comment\":\"comment 10.25 PM\"\r\n}",
+							"raw": "{\r\n    \"comment\":\"comment by 5\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -834,7 +846,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/interview-list/65abd8f8c2bf8dadefcbcf19/comment",
+							"raw": "http://localhost:3000/interview-list/65acb2bc67d6a2131999b756/comment",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -842,7 +854,7 @@
 							"port": "3000",
 							"path": [
 								"interview-list",
-								"65abd8f8c2bf8dadefcbcf19",
+								"65acb2bc67d6a2131999b756",
 								"comment"
 							]
 						}
@@ -931,7 +943,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"comment\":\"comment update\"\r\n}",
+							"raw": "{\r\n    \"comment\":\"comment update by 3\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -939,7 +951,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/interview-list/65abd8f8c2bf8dadefcbcf19/comment/65abe2cf8e0fa58a404f987e",
+							"raw": "http://localhost:3000/interview-list/65acb2bc67d6a2131999b756/comment/65acb40367d6a2131999b7b5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -947,78 +959,13 @@
 							"port": "3000",
 							"path": [
 								"interview-list",
-								"65abd8f8c2bf8dadefcbcf19",
+								"65acb2bc67d6a2131999b756",
 								"comment",
-								"65abe2cf8e0fa58a404f987e"
+								"65acb40367d6a2131999b7b5"
 							]
 						}
 					},
 					"response": [
-						{
-							"name": "update comment error",
-							"originalRequest": {
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"comment\":\"comment10 new\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:3000/interview-list/65abd8f8c2bf8dadefcbcf19/comment/65abe4590969ca8a7d0e609d",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"interview-list",
-										"65abd8f8c2bf8dadefcbcf19",
-										"comment",
-										"65abe4590969ca8a7d0e609d"
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "80"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"50-VhraXTSSlP+1tcJApp+GbNhlLWY\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 20 Jan 2024 15:21:37 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": [\n        \"This comment is not yours\"\n    ],\n    \"error\": \"Bad Request\",\n    \"statusCode\": 400\n}"
-						},
 						{
 							"name": "update comment",
 							"originalRequest": {
@@ -1083,6 +1030,83 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"data\": \"OK\"\n}"
+						},
+						{
+							"name": "update comment err",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"comment\":\"comment update\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/interview-list/65abd8f8c2bf8dadefcbcf19/comment/65acb40367d6a2131999b7b5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"interview-list",
+										"65abd8f8c2bf8dadefcbcf19",
+										"comment",
+										"65acb40367d6a2131999b7b5"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "10"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "8"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "42"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "120"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"78-uWEuHx5KsmXC1+hgj7oiOGC975o\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 Jan 2024 06:06:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": [\n        \"This comment is not yours\",\n        \"This comment is not in this interview\"\n    ],\n    \"error\": \"Bad Request\",\n    \"statusCode\": 400\n}"
 						}
 					]
 				},
@@ -1111,7 +1135,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/interview-list/65abaf29d1ecedec9ca5d4c8/comment/65abcad6efdf19c507666355",
+							"raw": "http://localhost:3000/interview-list/65acb2bc67d6a2131999b756/comment/65acb3e567d6a2131999b7a2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1119,13 +1143,168 @@
 							"port": "3000",
 							"path": [
 								"interview-list",
-								"65abaf29d1ecedec9ca5d4c8",
+								"65acb2bc67d6a2131999b756",
 								"comment",
-								"65abcad6efdf19c507666355"
+								"65acb3e567d6a2131999b7a2"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "delete comment err",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"comment\":\"comment10 new\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/interview-list/65acb2bc67d6a2131999b756/comment/65acb41967d6a2131999b7c1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"interview-list",
+										"65acb2bc67d6a2131999b756",
+										"comment",
+										"65acb41967d6a2131999b7c1"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "10"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "8"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "28"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"50-VhraXTSSlP+1tcJApp+GbNhlLWY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 Jan 2024 06:09:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": [\n        \"This comment is not yours\"\n    ],\n    \"error\": \"Bad Request\",\n    \"statusCode\": 400\n}"
+						},
+						{
+							"name": "delete comment",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"comment\":\"comment10 new\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/interview-list/65acb2bc67d6a2131999b756/comment/65acb41967d6a2131999b7c1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"interview-list",
+										"65acb2bc67d6a2131999b756",
+										"comment",
+										"65acb41967d6a2131999b7c1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "10"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "7"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "13"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d-5PmqOUOLyDrp2YvSxI+Jo0DoZSM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 Jan 2024 06:09:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"OK\"\n}"
+						}
+					]
 				}
 			]
 		}

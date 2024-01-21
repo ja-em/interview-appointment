@@ -26,6 +26,9 @@ export class AccessTokenGuard implements CanActivate {
       if (!data) {
         return false;
       }
+      if(!data?.payload['userId']){
+        return false
+      }
       const { id, name, username, role } =
         await this._mongoService.userModel.findById(data.payload['userId']);
       const currentUser: ICurrentUser = {
